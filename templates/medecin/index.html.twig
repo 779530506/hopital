@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Medecin index{% endblock %}
+
+{% block body %}
+    <h1>Medecin index</h1>
+   {% block content %}
+     <a class="btn btn-outline-warning" href="{{ path('medecin_new') }}">Créer un nouveau médecin</a>
+     <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Matricule</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>DateNaissance</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td>{{ medecin.id }}</td>
+                <td>{{ medecin.matricule }}</td>
+                <td>{{ medecin.prenom }}</td>
+                <td>{{ medecin.nom }}</td>
+                <td>{{ medecin.tel }}</td>
+                <td>{{ medecin.email }}</td>
+                <td>{{ medecin.dateNaissance ? medecin.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('medecin_show', {'id': medecin.id}) }}">afficher</a>
+                    <a class="btn btn-success" href="{{ path('medecin_edit', {'id': medecin.id}) }}">editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+  
+{% endblock %}

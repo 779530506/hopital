@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<p> {% if  (app.session != null) %}
+   il  y a session 
+   {% endif %}
+ </p>
+{% endblock %}

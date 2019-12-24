@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+    <h1>Services disponibles</h1>
+     <a class=" btn btn-primary " href="{{ path('service_new') }}">Créer un nouveau service</a> 
+    <br><table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.libelle }}</td>
+                <td>
+                    <a class=" btn btn-success " href="{{ path('service_show', {'id': service.id}) }}">Voir</a>
+                    <a class=" btn btn-success "  href="{{ path('service_edit', {'id': service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}
